@@ -1,1 +1,34 @@
-/home/teemal/.zsh_aliases
+#--git
+alias gs='git status'
+alias ga='git add .'
+alias gcm='git commit -m'
+alias gpushm='git push origin master'
+alias gpushd='git push origin dev'
+alias gpushhm='git push heroku master'
+alias gpushsm='git push staging master'
+alias gp='git push'
+alias gpullm='git pull origin master'
+alias gpulld='git pull origin dev'
+alias gpull='git pull'
+alias gb='git branch'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gm='git merge'
+alias ggraph='git log --graph --pretty=oneline --abbrev-commit'
+alias gl='git log'
+alias grename='git branch -m' #+oldname +newname
+alias spro='source ~/.zshrc'
+alias pro='vim ~/.zshrc'
+
+#--heroku
+alias gpushhm='git push heroku master'
+alias hl='heroku logs'
+
+#--serverless
+alias sd='serverless deploy'
+alias so='serverless offline'
+
+#--system
+alias c='clear'
+alias yeet='rm -rf'
+#==================
