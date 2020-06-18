@@ -1,0 +1,22 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "alt+m",
+        "command": "workbench.panel.terminal.focus"
+    },
+    {
+        "key": "alt+m",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+      "key": "alt+,",
+      "command": "workbench.action.terminal.focusNext",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "alt+.",
+      "command": "workbench.action.terminal.focusPrevious",
+      "when": "terminalFocus"
+    }
+]
