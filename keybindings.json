@@ -18,5 +18,14 @@
       "key": "alt+.",
       "command": "workbench.action.terminal.focusPrevious",
       "when": "terminalFocus"
+    },
+    {
+        "key": "alt+cmd+right",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "alt+cmd+left",
+        "command": "workbench.action.previousEditor"
     }
+
 ]
