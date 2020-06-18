@@ -31,4 +31,6 @@ alias so='serverless offline'
 #--system
 alias c='clear'
 alias yeet='rm -rf'
+alias python='python3'
+alias pip='pip3'
 #==================
