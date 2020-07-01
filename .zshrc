@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/teemal/.oh-my-zsh"
+export ZSH="/home/"$USER"/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -103,7 +103,7 @@ source $ZSH/oh-my-zsh.sh
 #
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%F{yellow}$USER%f%F{cyan}%B 🥳 ¯\_(ツ)_/¯ 😭 %b%f"
+    prompt_segment black default "%F{yellow}$USER%f%F{cyan}%B¯\_(ツ)_/¯%b%f"
   fi
 }
 
@@ -131,6 +131,30 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
+eval `dircolors ~/.dir_colors/dircolors`
+
+#NVM STUFF
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#---------WORK STUFF---------------
+# Custom ssh keys get cleaned out sometimes for some reason, so re-add them
+ssh-add ~/.ssh/aws_pioneer.pem &> /dev/null
+
+# pyenv support
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
+
+# nodenv support
+export PATH="$HOME/.nodenv/bin:$PATH"
+if command -v nodenv 1>/dev/null 2>&1; then
+    eval "$(nodenv init -)"
+fi
+
+# angular support
+export PATH="$HOME/.nodenv/versions/11.10.0/lib/node_modules/@angular/cli/bin:$PATH"
