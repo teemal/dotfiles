@@ -1,20 +1,27 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-    {
+    {  //move to editor from term
         "key": "alt+m",
+        "when": "editorFocus",
         "command": "workbench.panel.terminal.focus"
     },
-    {
+    // { //move to term from editor
+    //     "key": "alt+m",
+    //     "when": "sideBarFocus",
+    //     "command": "workbench.action.focusActiveEditorGroup"
+    // },
+    { // this should switch focus to sidebar but isnt working :/
         "key": "alt+m",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "terminalFocus"
-    },
-    {
+        "when": "terminalFocus",
+        // "command": "workbench.action.focusSideBar"
+        "command": "workbench.action.focusActiveEditorGroup"
+      },
+    { // move prev terminal
       "key": "alt+,",
       "command": "workbench.action.terminal.focusNext",
       "when": "terminalFocus"
     },
-    {
+    { // move next terminal
       "key": "alt+.",
       "command": "workbench.action.terminal.focusPrevious",
       "when": "terminalFocus"
@@ -27,13 +34,21 @@
         "key": "alt+cmd+left",
         "command": "workbench.action.previousEditor"
     },
-    {
+    { //move to right tab in editor
         "key": "alt+shift+left",
         "command": "workbench.action.navigateLeft"
     },
-    {
+    { //move to right tab in editor
         "key": "alt+shift+right",
         "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "ctrl+shift+alt+p ctrl+shift+alt+i",
+        "command": "workbench.action.focusSideBar"
+    },
+    {
+        "key": "ctrl+0",
+        "command": "-workbench.action.focusSideBar"
     }
 
 ]
