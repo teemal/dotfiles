@@ -43,3 +43,4 @@ alias ip_helper="$HOME/src/mode-devops/crabbitt/ip_helper.py"
 alias production_terms='gnome-terminal --window -t "`hostname`" --tab -t "moab1-a" -e "ssh -X pphpc@pu00facdrm001" --tab -t "moab1-b" -e "ssh -X pphpc@pu00facdrm001" --tab -t "moab2-a" -e "ssh -X pphpc@pu00facdrm002" --tab -t "moab2-b" -e "ssh -X pphpc@pu00facdrm002" --tab -t "pm1" -e "ssh -X pmgold@oasgoldds01" --tab -t "pm2" -e "ssh -X pmgold@oasgoldds02" --tab -t "giswf1" -e "ssh -X giswfgold@oasgoldds01" --tab -t "giswf2" -e "ssh -X giswfgold@oasgoldds02" --tab -t "ds-a" -e "ssh -X dsgold@pu00facapp092" --tab -t "ds-b" -e "ssh -X dsgold@pu00facapp093" --tab -t "oracle-a" -e "ssh -X oracle@pu00facapp092" --tab -t "oracle-b" -e "ssh -X oracle@pu00facapp093" --tab -t "palantir" -e "ssh -X appviewgold@pu00facapp078"'
 
 #==================
+alias idid='python ~/Dev/idid/idid.py'
