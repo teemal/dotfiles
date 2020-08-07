@@ -34,6 +34,7 @@ alias yeet='rm -rf'
 alias python='python3'
 alias pip='pip3'
 alias al='code ~/.zsh_aliases'
+alias tidey="bash $HOME/Dev/tidey/tidey.sh"
 #==================
 
 alias idid='python ~/Dev/idid/idid.py'
