@@ -1,9 +1,6 @@
 #!/usr/bin/bash
 
-mkdir $HOME/dev/
-mkdir $HOME/dev/personal
-mkdir $HOME/dev/personal/dotfiles
-mkdir $HOME/downloads
+mkdir -p $HOME/Dev/personal/dotfiles
 
 #direct stdout and stderr to log.out
 exec 3>&1 4>&2
@@ -18,16 +15,18 @@ sudo apt -y upgrade
 #install timeshift
 sudo apt -y install timeshift
 
+#install neofetch
+sudp apt install neofetch
+
 #install zoom
 cd $HOME/downloads
 wget https://zoom.us/client/latest/zoom_amd64.deb
 sudo apt -y install ./zoom_amd64.deb
 
 #install brave
-sudo apt -y install apt-transport-https curl
 curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt install brave-browser
+sudo sh -c 'echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com `lsb_release -sc` main" >> /etc/apt/sources.list.d/brave.list'
+sudo apt install brave-browser brave-keyring
 
 #install chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -35,10 +34,19 @@ sudo apt -y install ./google-chrome-stable_current_amd64.deb
 
 
 #install vscode
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo touch /etc/yum.repos.d/vscode.repo
-echo "[code] \n name=Visual Studio Code \n baseurl=https://packages.microsoft.com/yumrepos/vscode \n enabled=1 \n gpgcheck=1 \n gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> /etc/yum.repos.d/vscode.repo
-sudo yum -y install code
+if ! command -v code &> /dev/null
+    sudo apt install software-properties-common apt-transport-https wget
+    wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+    sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+    sudo apt install code
+fi
+
+#update vscode keybindings
+rm ~/.config/Code/User/keybindings.json
+ln ~/Dev/personal/dotfiles/keybindings.json ~/.config/Code/User/keybindings.json
+
+#install discord
+sudo snap install discord --classic
 ​
 #install postman
 wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
@@ -49,25 +57,32 @@ sudo ln -s /opt/Postman/Postman /usr/bin/postman
 #install zsh and oh-my-zsh
 if [ $0 != 'zsh' ]; then
     apt -y install zsh
-    chsh -s /bin/zsh
+    chsh -s /usr/bin/zsh
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
 ​
     #if ~.zsh_aliases doesnt exist, remove default shell files, clone repo, and make links
     FILE=~/.zsh_aliases
     if test -f "$FILE"; then
-        mkdir ~/dev/personal &> /dev/null
         cd ~/dev/personal
         git clone https://github.com/teemal/dotfiles.git
         rm -f ~/.zshrc ~/.zsh_aliases
-        ln ~/dev/personal/dotfiles/.zshrc ~/.zshrc
-        ln ~/dev/personal/dotfiles/.zsh_aliases ~/.zsh_aliases
+        ln ~/Dev/personal/dotfiles/.zshrc ~/.zshrc
+        ln ~/Dev/personal/dotfiles/.zsh_aliases ~/.zsh_aliases
         source ~/.zshrc 
     fi
 fi
 
+#nerd fonts
+cd ~
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+unzip Hack.zip
+mkdir -p ~/.local/share/fonts
+mv *.ttf ~/.local/share/fonts
+fc-cache -f -v
+ln ~/Dev/personal/dotfiles/settings.json ~/.config/Code/User/settings.json
 
 #install pyenv
-if ! command -v COMMAND &> /dev/null
+if ! command -v pyenv &> /dev/null
 then
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
     echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
