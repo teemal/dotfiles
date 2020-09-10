@@ -112,7 +112,7 @@ prompt_context() {
 source $HOME/.zsh_aliases
 
 #load env var
-source $HOME/.env
+# source $HOME/.env
 
 
 # >>> conda initialize >>>
@@ -131,8 +131,6 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
-eval `dircolors ~/.dir_colors/dircolors`
-
 #NVM STUFF
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -147,7 +145,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
+    # eval "$(pyenv virtualenv-init -)"
 fi
 
 # nodenv support
@@ -158,3 +156,7 @@ fi
 
 # angular support
 export PATH="$HOME/.nodenv/versions/11.10.0/lib/node_modules/@angular/cli/bin:$PATH"
+
+
+#rust
+export PATH="$HOME/.cargo/bin:$PATH"
