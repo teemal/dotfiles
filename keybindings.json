@@ -1,30 +1,24 @@
 // testPlace your key bindings in this file to override the defaultsauto[]
 [
-    {  //move to editor from term
+    // Toggle between terminal and editor focus
+    {
         "key": "alt+m",
-        "when": "editorFocus",
-        "command": "workbench.panel.terminal.focus"
+        "command": "workbench.action.terminal.focus"
     },
-    // { //move to term from editor
-    //     "key": "alt+m",
-    //     "when": "sideBarFocus",
-    //     "command": "workbench.action.focusActiveEditorGroup"
-    // },
-    { // this should switch focus to sidebar but isnt working :/
+    {
         "key": "alt+m",
-        "when": "terminalFocus",
-        // "command": "workbench.action.focusSideBar"
-        "command": "workbench.action.focusActiveEditorGroup"
-      },
-    { // move prev terminal
-      "key": "alt+,",
-      "command": "workbench.action.terminal.focusNext",
-      "when": "terminalFocus"
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
     },
-    { // move next terminal
-      "key": "alt+.",
-      "command": "workbench.action.terminal.focusPrevious",
-      "when": "terminalFocus"
+    {
+        "key": "alt+,",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt+.",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
     },
     {
         "key": "alt+cmd+right",
@@ -34,21 +28,12 @@
         "key": "alt+cmd+left",
         "command": "workbench.action.previousEditor"
     },
-    { //move to right tab in editor
+    {
         "key": "alt+shift+left",
         "command": "workbench.action.navigateLeft"
     },
-    { //move to right tab in editor
+    {
         "key": "alt+shift+right",
         "command": "workbench.action.navigateRight"
-    },
-    {
-        "key": "ctrl+shift+alt+p ctrl+shift+alt+i",
-        "command": "workbench.action.focusSideBar"
-    },
-    {
-        "key": "ctrl+0",
-        "command": "-workbench.action.focusSideBar"
     }
-
 ]
