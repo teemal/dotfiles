@@ -19,11 +19,6 @@ parse_git_branch() {
 }
 
 PS1="\e[93m$(parse_git_branch)->\e[95m \w \n\e[0;32m teemal\e[36m ¯\_(ツ)_/¯: \e[0m"
-#rapid-live-01/dg-commercial-dev-train-rapid/us-east-1/dev/services/rapid/warden-secrets/terragrunt.hcl
-#rapid-live-01/dg-commercial-dev-train-rapid/us-east-1/dev/multi-service/p20-20-devops_golden-goose/rapid/terragrunt.hcl
-#rapid-live-01/dg-commercial-dev-train-rapid/us-east-1/dev/multi-service/p20-20-devops_gg-build-docker/rapid/terragrunt.hcl
-# export PYTHONPATH="${PYTHONPATH}:/home/ta008943/Dev/Devops/golden-goose/gg-common/python/lib/python3.8/site-packages/"
-# export PYTHONPATH="${PYTHONPATH}:/home/ta008943/src/pyenv/versions/3.8.6/envs/gg/lib/python3.8/site-packages"
 source "$HOME/.cargo/env"
 
 alias devopsenv="echo -n P2020_PASS=; read -rs P2020_PASS; echo; export P2020_PASS; export PYTHONSTARTUP=\"/home/ta008943/Dev/Devops/devopstools/devopstools/dlenv_startup.py\"; pyenv activate devops 2> >(grep -v PYENV_VIRTUALENV_DISABLE_PROMPT)"
@@ -42,7 +37,7 @@ export PATH="${PYENV_ROOT}/bin:${PATH}"
 eval "$(pyenv init -)"   
 eval "$(pyenv virtualenv-init -)"
 
-# pyenv support
+# new pyenv
 # export PYENV_ROOT="${HOME}/src/.pyenv"
 # if ! [[ ":${PATH}:" == *":${PYENV_ROOT}/bin:"* ]]; then
 #     export PATH="${PYENV_ROOT}/bin:${PATH}"
